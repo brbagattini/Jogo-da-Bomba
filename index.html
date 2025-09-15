@@ -1,40 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="CSS/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da bomba</title>
+  <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
     <main>
-        <button type="button" id="Granada">
-            <div>
-                <h1>GRANADA</h1>
-                <img src="IMG/Granada.png" alt="">
+        <div class="menu">
+            <div class="playersdiv">
+                <div class="playername">
+                    <input type="text" id="nome-usuario" name="nome" placeholder="Nome do Usuário">
+                </div>
+                <div class="playerlist" id="playerlist">
+                </div>
             </div>
-        </button>
-        <button type="button" id="Dinamite">
-            <div>
-                <h1>DINAMITE</h1>
-                <img src="IMG/Dinamite.png" alt="">
-            </div>
-        </button>
-        <button type="button" id="Bomba">
-            <div>
-                <h1>BOMBA</h1>
-                <img src="IMG/Bomba.png" alt="">
-            </div>
-        </button>
-        <button type="button" id="Nuke">
-            <div>
-                <h1>NÍVEL NUCLEAR</h1>
-                <img src="IMG/Nuke.png" alt="">
-            </div>
-        </button>
+        <div class="btndiv">
+            <button class="Playeradd" id="addPlayer">Adicionar Jogador</button>
+            <button class="Start" id="startGame">Iniciar Jogo</button>
+        </div>
+        </div>
     </main>
-    <footer>
-
-    </footer>
+    <script src="JS/app.js"></script>
 </body>
 </html>
