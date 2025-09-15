@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bomba • Pergunta</title>
+  <link rel="stylesheet" href="CSS/style.css" />
+</head>
+<body>
+  <main>
+    <a class="back-btn" href="bombas.html">← Voltar</a>
+
+    <div class="menu twist-menu">
+      <h1 class="mode-title">Pergunta da Bomba</h1>
+
+      <!-- Seletor de níveis (posicionado no canto superior direito via CSS) -->
+      <div class="level-controls">
+        <div class="level-field">
+          <label for="levelMin">Nível mínimo</label>
+          <select id="levelMin"></select>
+        </div>
+        <div class="level-field">
+          <label for="levelMax">Nível máximo</label>
+          <select id="levelMax"></select>
+        </div>
+      </div>
+
+      <!-- Palco da explosão + card tipo Twist (sem flip e sem jogador) -->
+      <div class="explosion-stage">
+        <div class="explosion" id="explosion">
+          <!-- partículas via JS -->
+          <div class="twist-like" id="questionCard" hidden>
+            <div class="card-face-like">
+              <div class="q-top">
+                <span class="q-badge" id="qLevel">Nível 1</span>
+              </div>
+              <div class="q-text" id="qText">—</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="DetonateBtn" id="detonateBtn">Detonar 💥</button>
+    </div>
+  </main>
+
+  <script src="JS/bombacard.js"></script>
+</body>
+</html>
