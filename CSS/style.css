@@ -407,3 +407,10 @@ button {
 .card.flip-hop {
   animation: flipHop 0.6s ease-out forwards;
 }
+/* (já usado em modes) */
+.mode-card.bomb {
+  border-color: #FF2E2E;
+}
+.mode-card.bomb:hover {
+  border-color: #c92121;
+}
