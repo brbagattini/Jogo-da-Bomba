@@ -414,3 +414,160 @@ button {
 .mode-card.bomb:hover {
   border-color: #c92121;
 }
+/* ---------- Roleta ---------- */
+.roulette-wrapper {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  margin: 0 auto 1rem;
+}
+
+.wheel {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 6px solid #111;
+  box-shadow: 0 6px 24px rgba(0,0,0,.5) inset, 0 6px 24px rgba(0,0,0,.35);
+  overflow: hidden;
+  transform: rotate(0deg);
+}
+
+.pointer {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  color: #FFD93D;
+  text-shadow: 0 1px 3px rgba(0,0,0,.6);
+}
+
+.wheel-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0 0;
+  width: 50%;
+  text-align: right;
+  padding-right: 12px;
+  font-size: 14px;
+  color: #fff;
+  pointer-events: none;
+  user-select: none;
+  text-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+
+.hint {
+  opacity: .8;
+  font-size: .95rem;
+}
+
+/* ---------- Popup vencedor ---------- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.65);
+  display: grid;
+  place-items: center;
+}
+
+.overlay-content {
+  background: #111;
+  border: 2px solid #FF2E2E;
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0,0,0,.6);
+}
+
+.overlay-title {
+  font-size: 1rem;
+  opacity: .85;
+  margin-bottom: .35rem;
+}
+
+.overlay-name {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #FFD93D;
+}
+
+.overlay-sub {
+  margin-top: .5rem;
+  font-size: .9rem;
+  opacity: .8;
+}
+
+/* ---------- Selecionar Jogador ---------- */
+.select-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
+
+.select-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #111;
+  border: 2px solid #FF2E2E;
+  border-radius: 10px;
+  padding: .6rem .8rem;
+}
+
+.select-row span {
+  font-weight: 700;
+}
+
+.select-btn {
+  padding: .5rem .8rem;
+  border: none;
+  border-radius: 8px;
+  background: #FF2E2E;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  transition: .15s;
+}
+.select-btn:hover { background: #c92121; }
+
+/* ---------- Carta (reaproveita sua Twist) ---------- */
+.card-scene {
+  width: 220px;
+  height: 320px;
+  perspective: 1000px;
+  margin: 0 auto;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform .8s;
+  cursor: pointer;
+}
+
+.card.flip { transform: rotateY(180deg); }
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  font-weight: 800;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.card-front { background: #3BA9F0; color: #fff; }
+.card-back  { background: #FF2E2E; color: #fff; transform: rotateY(180deg); }
+
+.selected-name {
+  font-size: 1.6rem;
+  line-height: 1.2;
+}

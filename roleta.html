@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Roleta - Jogo da Bomba</title>
+  <link rel="stylesheet" href="CSS/style.css" />
+</head>
+<body>
+  <main>
+    <a class="back-btn" href="bombas.html">← Voltar</a>
+
+    <div class="menu mode-menu">
+      <h1 class="mode-title">Roleta</h1>
+
+      <div class="roulette-wrapper">
+        <div class="pointer">▲</div>
+        <div id="wheel" class="wheel"></div>
+      </div>
+
+      <p class="hint">A roleta gira automaticamente…</p>
+    </div>
+
+    <!-- Popup vencedor -->
+    <div id="winnerOverlay" class="overlay" hidden>
+      <div class="overlay-content">
+        <div class="overlay-title">Selecionado:</div>
+        <div id="winnerName" class="overlay-name">—</div>
+        <div class="overlay-sub">Toque em qualquer lugar para continuar</div>
+      </div>
+    </div>
+  </main>
+
+  <script src="JS/roleta.js"></script>
+</body>
+</html>
