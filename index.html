@@ -7,21 +7,40 @@
   <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-    <main>
-        <div class="menu">
-            <div class="playersdiv">
-                <div class="playername">
-                    <input type="text" id="nome-usuario" name="nome" placeholder="Nome do Usuário">
-                </div>
-                <div class="playerlist" id="playerlist">
-                </div>
-            </div>
-        <div class="btndiv">
-            <button class="Playeradd" id="addPlayer">Adicionar Jogador</button>
-            <button class="Start" id="startGame">Iniciar Jogo</button>
+  <main>
+    <div class="menu">
+      <div class="playersdiv">
+        <div class="playername">
+          <input type="text" id="nome-usuario" name="nome" placeholder="Nome do Usuário">
         </div>
-        </div>
-    </main>
-    <script src="JS/app.js"></script>
+        <div class="playerlist" id="playerlist"></div>
+      </div>
+      <div class="btndiv">
+        <button class="Playeradd" id="addPlayer">Adicionar Jogador</button>
+        <button class="Start" id="startGame">Iniciar Jogo</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- TELA DE SELEÇÃO DE MODO -->
+  <section class="screen" id="modeScreen" aria-hidden="true">
+    <div class="screen-card">
+      <h2>Escolha o modo</h2>
+      <p>Selecione como quer jogar:</p>
+
+      <div class="options">
+        <button class="option-btn twist" id="chooseTwist">
+          Cartas Twist
+        </button>
+        <button class="option-btn bombs" id="chooseBombs">
+          Bombas
+        </button>
+      </div>
+
+      <button class="back-btn" id="backToMenu">Voltar</button>
+    </div>
+  </section>
+
+  <script src="JS/app.js"></script>
 </body>
 </html>

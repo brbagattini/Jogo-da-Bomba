@@ -175,3 +175,109 @@ button {
 .playerlist::-webkit-scrollbar-thumb:hover {
     background: #2a8bc7;
 }
+/* Página de seleção de modos */
+.mode-menu {
+  width: 70%;
+  max-width: 900px;
+  height: auto;
+  min-height: 60%;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.mode-title {
+  width: 100%;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+/* Grid dos modos */
+.mode-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+
+@media (max-width: 640px) {
+  .mode-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Cartões de modo */
+.mode-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  background: #111;
+  border: 2px solid #3BA9F0;   /* borda base */
+  border-radius: 14px;
+  padding: 1rem;
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+.mode-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.45);
+}
+
+.mode-card .mode-icon {
+  font-size: 2rem;
+  margin-bottom: .5rem;
+}
+
+.mode-card .mode-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.mode-card .mode-desc {
+  margin-top: .25rem;
+  color: #cfcfcf;
+  font-size: .95rem;
+}
+
+/* Esquemas de cor por modo */
+.mode-card.twist {
+  border-color: #3BA9F0;              /* azul (bebê) */
+}
+
+.mode-card.twist:hover {
+  border-color: #2a8bc7;
+}
+
+.mode-card.bomb {
+  border-color: #FF2E2E;              /* vermelho (explosão) */
+}
+
+.mode-card.bomb:hover {
+  border-color: #c92121;
+}
+
+/* Botão Voltar no cantinho */
+.back-btn {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #111;
+  border: 1px solid #333;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  opacity: 0.9;
+  transition: background .15s ease, opacity .15s ease, transform .1s ease;
+  z-index: 10;
+}
+
+.back-btn:hover {
+  background: #1a1a1a;
+  opacity: 1;
+  transform: translateY(-1px);
+}

@@ -91,11 +91,11 @@ addBtn.addEventListener("click", () => {
   }
 });
 
-// Salvar jogadores no localStorage
 startBtn.addEventListener("click", () => {
   if (players.length > 0) {
     localStorage.setItem("jogadores", JSON.stringify(players));
-    alert("Jogadores salvos no localStorage!");
+    // redireciona para a página de modos
+    window.location.href = "modes.html";
   } else {
     alert("Adicione pelo menos um jogador antes de iniciar!");
   }
