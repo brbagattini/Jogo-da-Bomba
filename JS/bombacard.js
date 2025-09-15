@@ -1,4 +1,3 @@
-// === refs ===
 const detonateBtn  = document.getElementById("detonateBtn");
 const explosion    = document.getElementById("explosion");
 const levelMinSel  = document.getElementById("levelMin");
@@ -7,21 +6,17 @@ const questionCard = document.getElementById("questionCard");
 const qTextEl      = document.getElementById("qText");
 const qLevelEl     = document.getElementById("qLevel");
 
-// === jogadores (para perguntas com outro player) ===
 const ALL_PLAYERS = JSON.parse(localStorage.getItem("jogadores") || "[]");
 const SELECTED    = localStorage.getItem("selecionado") || null;
 
-// util
 const rand    = (min, max) => Math.random() * (max - min) + min;
 const rint    = (min, max) => Math.floor(rand(min, max + 1));
 const choose  = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-// partículas/cores
 const COLORS     = ["#FF2E2E", "#FFD93D", "#FF7B00", "#FFF1A6", "#F8B400", "#FFE07D", "#FFFFFF"];
 const BASE_SIZE  = [6,7,8,9,10];
 const DUR_RANGE  = [650, 1000];
 
-// === perguntas (algumas usam {{outro}} ) ===
 const QUESTIONS = [
   { level: 1,  text: "Você contaria uma piada boba para quebrar o gelo?" },
   { level: 2,  text: "Você dançaria 10 segundos em pé onde está?" },
@@ -35,7 +30,6 @@ const QUESTIONS = [
   { level: 10, text: "Você gravaria um vídeo curto fazendo careta e mandaria pro grupo?" }
 ];
 
-// === preenche selects 1..10 ===
 for (let i = 1; i <= 10; i++) {
   const a = document.createElement("option");
   const b = document.createElement("option");
@@ -47,48 +41,40 @@ for (let i = 1; i <= 10; i++) {
 levelMinSel.value = "3";
 levelMaxSel.value = "7";
 
-// === helpers para lidar com {{outro}} ===
 function pickOtherPlayer() {
   if (!ALL_PLAYERS.length) return null;
   const pool = SELECTED ? ALL_PLAYERS.filter(p => p !== SELECTED) : ALL_PLAYERS.slice();
-  if (!pool.length) return null; // só existe o selecionado
+  if (!pool.length) return null;
   return choose(pool);
 }
 
 function renderTextWithOther(text) {
   if (!text.includes("{{outro}}")) return text;
   const outro = pickOtherPlayer();
-  // fallback elegante
   return text.replaceAll("{{outro}}", outro || "outro jogador");
 }
 
-// === explosão + revelar pergunta ===
 function detonar() {
-  // níveis
   let min = parseInt(levelMinSel.value, 10);
   let max = parseInt(levelMaxSel.value, 10);
   if (isNaN(min) || isNaN(max)) return;
   if (min > max) [min, max] = [max, min];
 
-  // escolhe pergunta no intervalo
   const pool = QUESTIONS.filter(q => q.level >= min && q.level <= max);
   if (!pool.length) { alert("Não há perguntas para esse intervalo de nível."); return; }
   const q = choose(pool);
 
-  // limpa estado anterior
   explosion.querySelectorAll(".particle").forEach(p => p.remove());
   questionCard.hidden = true;
   questionCard.classList.remove("reveal");
   qTextEl.textContent = "";
   qLevelEl.textContent = `Nível ${q.level}`;
 
-  // flash
   const flash = document.createElement("div");
   flash.className = "flash-screen";
   document.body.appendChild(flash);
   flash.addEventListener("animationend", () => flash.remove(), { once: true });
 
-  // particulas
   const level  = q.level;
   const count  = 18 + level * 8;
   const radius = 70 + level * 10;
@@ -109,7 +95,6 @@ function detonar() {
     part.addEventListener("animationend", () => part.remove(), { once: true });
   }
 
-  // revela pergunta com substituição de {{outro}}
   setTimeout(() => {
     qTextEl.textContent = renderTextWithOther(q.text);
     questionCard.hidden = false;
@@ -117,5 +102,4 @@ function detonar() {
   }, 220);
 }
 
-// evento
 detonateBtn.addEventListener("click", detonar);

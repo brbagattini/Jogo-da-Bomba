@@ -5,7 +5,6 @@ const startBtn = document.getElementById("startGame");
 
 let players = [];
 
-// Carregar jogadores já salvos no localStorage
 window.addEventListener("load", () => {
   const savedPlayers = localStorage.getItem("jogadores");
   if (savedPlayers) {
@@ -14,7 +13,6 @@ window.addEventListener("load", () => {
   }
 });
 
-// Criar item de jogador na tela
 function addPlayerToDOM(name, index) {
   const div = document.createElement("div");
   div.classList.add("player-item");
@@ -23,7 +21,6 @@ function addPlayerToDOM(name, index) {
   const span = document.createElement("span");
   span.textContent = name;
 
-  // Container dos botões
   const actions = document.createElement("div");
   actions.classList.add("player-actions");
 
@@ -35,7 +32,6 @@ function addPlayerToDOM(name, index) {
   removeBtn.textContent = "🗑️";
   removeBtn.classList.add("remove-btn");
 
-  // Evento de editar inline
   editBtn.addEventListener("click", () => {
     const inputEdit = document.createElement("input");
     inputEdit.type = "text";
@@ -60,7 +56,6 @@ function addPlayerToDOM(name, index) {
     });
   });
 
-  // Evento de remover
   removeBtn.addEventListener("click", () => {
     players.splice(index, 1);
     atualizarDOM();
@@ -74,14 +69,11 @@ function addPlayerToDOM(name, index) {
   playerList.appendChild(div);
 }
 
-
-// Atualizar lista inteira
 function atualizarDOM() {
   playerList.innerHTML = "";
   players.forEach((name, index) => addPlayerToDOM(name, index));
 }
 
-// Adicionar jogador
 addBtn.addEventListener("click", () => {
   const name = input.value.trim();
   if (name !== "") {
@@ -94,7 +86,6 @@ addBtn.addEventListener("click", () => {
 startBtn.addEventListener("click", () => {
   if (players.length > 0) {
     localStorage.setItem("jogadores", JSON.stringify(players));
-    // redireciona para a página de modos
     window.location.href = "modes.html";
   } else {
     alert("Adicione pelo menos um jogador antes de iniciar!");

@@ -119,13 +119,11 @@ button {
     color: #fff;
 }
 
-/* Grupo de botões */
 .player-actions {
     display: flex;
     gap: 6px;
 }
 
-/* Botões quadrados */
 .player-item button {
     width: 32px;
     height: 32px;
@@ -133,13 +131,12 @@ button {
     justify-content: center;
     align-items: center;
     border: none;
-    border-radius: 6px; /* quadradinho com cantos suaves */
+    border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
     transition: 0.2s;
 }
 
-/* Botão editar */
 .edit-btn {
     background: #ffc107;
     color: #000;
@@ -149,7 +146,6 @@ button {
     background: #e0a800;
 }
 
-/* Botão remover */
 .remove-btn {
     background: #dc3545;
     color: #fff;
@@ -175,7 +171,6 @@ button {
 .playerlist::-webkit-scrollbar-thumb:hover {
     background: #2a8bc7;
 }
-/* Página de seleção de modos */
 .mode-menu {
   width: 70%;
   max-width: 900px;
@@ -193,7 +188,6 @@ button {
   color: #fff;
 }
 
-/* Grid dos modos */
 .mode-grid {
   width: 100%;
   display: grid;
@@ -207,14 +201,13 @@ button {
   }
 }
 
-/* Cartões de modo */
 .mode-card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-decoration: none;
   background: #111;
-  border: 2px solid #3BA9F0;   /* borda base */
+  border: 2px solid #3BA9F0;
   border-radius: 14px;
   padding: 1rem;
   transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
@@ -242,9 +235,8 @@ button {
   font-size: .95rem;
 }
 
-/* Esquemas de cor por modo */
 .mode-card.twist {
-  border-color: #3BA9F0;              /* azul (bebê) */
+  border-color: #3BA9F0;
 }
 
 .mode-card.twist:hover {
@@ -252,14 +244,13 @@ button {
 }
 
 .mode-card.bomb {
-  border-color: #FF2E2E;              /* vermelho (explosão) */
+  border-color: #FF2E2E;
 }
 
 .mode-card.bomb:hover {
   border-color: #c92121;
 }
 
-/* Botão Voltar no cantinho */
 .back-btn {
   position: fixed;
   top: 16px;
@@ -281,7 +272,6 @@ button {
   opacity: 1;
   transform: translateY(-1px);
 }
-/* Página Twist */
 .twist-menu {
   width: 400px;
   height: auto;
@@ -295,7 +285,7 @@ button {
 .card-scene {
   width: 200px;
   height: 300px;
-  perspective: 1000px; /* dá profundidade 3D */
+  perspective: 1000px;
   margin: 1rem auto;
 }
 
@@ -338,7 +328,6 @@ button {
   transform: rotateY(180deg);
 }
 
-/* Botão para próxima carta */
 .NextTwist {
   background: #3BA9F0;
   color: #fff;
@@ -353,20 +342,17 @@ button {
 .NextTwist:hover {
   background: #2a8bc7;
 }
-/* Variáveis de transformação e animação */
 .card {
-  --rotY: 0deg;      /* 0deg = frente | 180deg = verso */
-  --tilt: 0deg;      /* inclinação aleatória ao pedir nova carta */
+  --rotY: 0deg;
+  --tilt: 0deg;
   transform: rotateY(var(--rotY)) rotateZ(var(--tilt));
   transition: transform .6s cubic-bezier(.2,.8,.2,1);
 }
 
-/* estado “virada” (verso) – se você preferir controlar por classe */
 .card.flip {
   --rotY: 180deg;
 }
 
-/* pulo rápido */
 @keyframes hop {
   0%   { transform: translateY(0)    rotateY(var(--rotY)) rotateZ(var(--tilt)); }
   30%  { transform: translateY(-18px) rotateY(var(--rotY)) rotateZ(var(--tilt)); }
@@ -375,16 +361,13 @@ button {
   100% { transform: translateY(0)    rotateY(var(--rotY)) rotateZ(var(--tilt)); }
 }
 
-/* classe que dispara o pulo */
 .card.hop {
   animation: hop .45s ease-out;
 }
-/* Estado final da carta revelada: verso visível + ângulo atual */
 .card.revealed {
   transform: rotateY(180deg) rotateZ(var(--tilt-end, 0deg));
 }
 
-/* Animação: pulo + flip + pouso no ângulo final */
 @keyframes flipHop {
   0% {
     transform: translateY(0) rotateY(0deg) rotateZ(var(--tilt-start, 0deg));
@@ -403,18 +386,15 @@ button {
   }
 }
 
-/* Classe que dispara a animação */
 .card.flip-hop {
   animation: flipHop 0.6s ease-out forwards;
 }
-/* (já usado em modes) */
 .mode-card.bomb {
   border-color: #FF2E2E;
 }
 .mode-card.bomb:hover {
   border-color: #c92121;
 }
-/* ---------- Roleta ---------- */
 .roulette-wrapper {
   position: relative;
   width: 320px;
@@ -462,7 +442,6 @@ button {
   font-size: .95rem;
 }
 
-/* ---------- Popup vencedor ---------- */
 .overlay {
   position: fixed;
   inset: 0;
@@ -498,7 +477,6 @@ button {
   opacity: .8;
 }
 
-/* ---------- Selecionar Jogador ---------- */
 .select-list {
   width: 100%;
   display: flex;
@@ -532,7 +510,6 @@ button {
 }
 .select-btn:hover { background: #c92121; }
 
-/* ---------- Carta (reaproveita sua Twist) ---------- */
 .card-scene {
   width: 220px;
   height: 320px;
@@ -571,7 +548,6 @@ button {
   font-size: 1.6rem;
   line-height: 1.2;
 }
-/* -------- Bombacard: níveis -------- */
 .level-controls {
   display: grid;
   grid-template-columns: repeat(2, minmax(120px, 1fr));
@@ -599,7 +575,6 @@ button {
 }
 .level-field select:focus { border-color: #FF2E2E; }
 
-/* -------- Bombacard: palco da explosão -------- */
 .explosion-stage {
   position: relative;
   width: 260px;
@@ -632,7 +607,6 @@ button {
   transform: scale(.8);
 }
 
-/* botão detonar */
 .DetonateBtn {
   background: #FF2E2E;
   color: #fff;
@@ -645,7 +619,6 @@ button {
 }
 .DetonateBtn:hover { background: #c92121; }
 
-/* -------- Efeitos da explosão -------- */
 .flash-screen {
   position: fixed;
   inset: 0;
@@ -660,7 +633,6 @@ button {
   100% { opacity: 0; }
 }
 
-/* partícula básica */
 .particle {
   position: absolute;
   left: 50%;
@@ -674,14 +646,12 @@ button {
   animation: boom var(--dur, 900ms) cubic-bezier(.2,.7,.2,1) forwards;
 }
 
-/* trajetória das partículas */
 @keyframes boom {
   0%   { transform: translate(-50%, -50%) translate(0,0) scale(1); opacity: 1; }
   70%  { opacity: 1; }
   100% { transform: translate(-50%, -50%) translate(var(--dx), var(--dy)) scale(.8); opacity: 0; }
 }
 
-/* revelar nome após a explosão */
 .reveal-name {
   animation: namePop .35s .25s ease-out forwards;
 }
@@ -689,7 +659,6 @@ button {
   from { opacity: 0; transform: scale(.8); }
   to   { opacity: 1; transform: scale(1); }
 }
-/* Card estilo Twist (sem opções) */
 .twist-like {
   width: 260px;
   height: 360px;
@@ -702,7 +671,7 @@ button {
 .card-face-like {
   width: 100%;
   height: 100%;
-  background: #FF2E2E;     /* fundo da carta (lado “revelado”) */
+  background: #FF2E2E;
   color: #fff;
   border-radius: 14px;
   border: 2px solid #c92121;
@@ -742,7 +711,6 @@ button {
   padding: 8px;
 }
 
-/* anima o card surgindo depois da explosão */
 .twist-like.reveal {
   animation: qReveal .28s ease-out forwards;
   opacity: 0;
@@ -751,7 +719,6 @@ button {
 @keyframes qReveal {
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
-/* -------- Card da Bomba (igual vibe da Twist, sem flip) -------- */
 .bomb-card {
   width: 260px;
   min-height: 160px;
@@ -764,7 +731,7 @@ button {
   grid-template-rows: auto 1fr;
   gap: 10px;
   padding: 14px;
-  opacity: 0;                /* fica oculto até revelar */
+  opacity: 0;
   transform: translateY(8px) scale(.98);
 }
 
@@ -787,7 +754,6 @@ button {
   line-height: 1.35;
 }
 
-/* Reaproveita estilos já usados */
 .q-badge {
   background: #111;
   color: #fff;
@@ -801,16 +767,14 @@ button {
   font-size: .85rem;
   opacity: .9;
 }
-/* ===== Ajustes gerais da página bomba ===== */
 .twist-menu {
-  width: min(92vw, 560px);   /* central e com limite */
+  width: min(92vw, 560px);
   min-height: 560px;
   padding: 2rem;
   gap: 1.5rem;
-  margin: 0 auto;            /* garante centralização */
+  margin: 0 auto;
 }
 
-/* palco/explosão 100% centralizados */
 .explosion-stage {
   width: 100%;
   display: grid;
@@ -819,7 +783,7 @@ button {
 }
 
 .explosion {
-  width: min(90%, 360px);    /* não deixa fugir da tela */
+  width: min(90%, 360px);
   height: auto;
   min-height: 260px;
   display: grid;
@@ -827,7 +791,6 @@ button {
   overflow: visible;
 }
 
-/* ===== Card da Bomba (estilo + ajustes) ===== */
 .bomb-card {
   width: min(90%, 360px);
   min-height: 220px;
@@ -844,7 +807,6 @@ button {
   transform: translateY(8px) scale(.98);
 }
 
-/* entrada suave */
 .bomb-card.reveal {
   animation: bombCardIn .28s ease-out forwards;
 }
@@ -852,7 +814,6 @@ button {
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* header organizado em 2 colunas (badge + nome) */
 .bomb-card-header {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -860,7 +821,6 @@ button {
   gap: 10px;
 }
 
-/* badge nível (mantém o seu estilo) */
 .q-badge {
   background: #111;
   color: #fff;
@@ -871,23 +831,13 @@ button {
   border: 1px solid rgba(255,255,255,.15);
 }
 
-/* nome do jogador: quebra com espaçamento correto */
 .q-for {
   font-size: .95rem;
   line-height: 1.2;
-  word-break: break-word;  /* quebra bonito em nomes grandes */
+  word-break: break-word;
   white-space: normal;
   opacity: .95;
 }
-
-/* (opção alternativa) Se preferir ellipsis em 1 linha, use isso:
-.q-for {
-  font-size: .95rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-*/
 
 .bomb-card-text {
   font-size: 1.2rem;
@@ -899,7 +849,6 @@ button {
   padding: 6px 4px;
 }
 
-/* selects mais destacados (opcional) */
 .level-controls {
   width: 100%;
   max-width: 480px;
@@ -921,12 +870,10 @@ button {
   font-weight: 800;
 }
 
-/* botão detonar centralizado */
 .DetonateBtn {
   width: min(90%, 360px);
   margin: 0 auto;
 }
-/* posiciona os selects no canto superior direito */
 .level-controls {
   position: absolute;
   top: 20px;
@@ -960,12 +907,7 @@ button {
   font-size: .9rem;
   min-width: 60px;
 }
-/* ===========================
-   RESPONSIVIDADE
-   (adicione no final do style.css)
-=========================== */
 
-/* ----- Tablet (≤1024px) ----- */
 @media (max-width: 1024px){
   .menu{ width:min(94vw, 820px) }
 
@@ -985,9 +927,7 @@ button {
   .playerlist{ max-height: 300px }
 }
 
-/* ----- Mobile (≤640px) ----- */
 @media (max-width: 640px){
-  /* painel principal mais solto */
   .menu{
     width: 100%;
     padding: clamp(1rem, 4vw, 1.5rem);
@@ -995,10 +935,8 @@ button {
     gap: 1.25rem;
   }
 
-  /* título menor e com mais respiro */
   .mode-title{ font-size: clamp(1.4rem, 5vw, 2rem) }
 
-  /* filtros de nível vão para o fluxo normal e centralizam */
   .twist-menu{ width:min(96vw, 560px) }
   .level-controls{
     position: static;
@@ -1009,27 +947,22 @@ button {
   .level-field label{ font-size: .8rem }
   .level-field select{ min-width: 56px; padding: .45rem .6rem }
 
-  /* carta / pergunta / detonar ocupam largura confortável */
   .twist-like,
   .bomb-card,
   .DetonateBtn{
     width: min(94vw, 380px);
   }
 
-  /* palco da explosão e roleta */
   .explosion{ width: min(92vw, 320px); min-height: 220px }
   .roulette-wrapper{ width:min(92vw, 300px) }
 
-  /* botões empilhados */
   .btndiv{ flex-direction: column }
   .btndiv > button{ width: 100% }
 
-  /* lista de jogadores: alvos maiores */
   .player-item{ padding: .6rem .7rem }
   .player-item button{ width: 36px; height: 36px; font-size: 18px }
 }
 
-/* ----- Mobile pequeno (≤480px) ----- */
 @media (max-width: 480px){
   .back-btn{ top:10px; left:10px; padding:.5rem .7rem }
 
