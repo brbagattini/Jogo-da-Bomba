@@ -281,3 +281,129 @@ button {
   opacity: 1;
   transform: translateY(-1px);
 }
+/* Página Twist */
+.twist-menu {
+  width: 400px;
+  height: auto;
+  min-height: 500px;
+  padding: 2rem;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-scene {
+  width: 200px;
+  height: 300px;
+  perspective: 1000px; /* dá profundidade 3D */
+  margin: 1rem auto;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+  cursor: pointer;
+}
+
+.card.flip {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 1rem;
+}
+
+.card-front {
+  background: #3BA9F0;
+  color: #fff;
+}
+
+.card-back {
+  background: #FF2E2E;
+  color: #fff;
+  transform: rotateY(180deg);
+}
+
+/* Botão para próxima carta */
+.NextTwist {
+  background: #3BA9F0;
+  color: #fff;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: 0.2s;
+}
+
+.NextTwist:hover {
+  background: #2a8bc7;
+}
+/* Variáveis de transformação e animação */
+.card {
+  --rotY: 0deg;      /* 0deg = frente | 180deg = verso */
+  --tilt: 0deg;      /* inclinação aleatória ao pedir nova carta */
+  transform: rotateY(var(--rotY)) rotateZ(var(--tilt));
+  transition: transform .6s cubic-bezier(.2,.8,.2,1);
+}
+
+/* estado “virada” (verso) – se você preferir controlar por classe */
+.card.flip {
+  --rotY: 180deg;
+}
+
+/* pulo rápido */
+@keyframes hop {
+  0%   { transform: translateY(0)    rotateY(var(--rotY)) rotateZ(var(--tilt)); }
+  30%  { transform: translateY(-18px) rotateY(var(--rotY)) rotateZ(var(--tilt)); }
+  60%  { transform: translateY(0)    rotateY(var(--rotY)) rotateZ(var(--tilt)); }
+  80%  { transform: translateY(-8px)  rotateY(var(--rotY)) rotateZ(var(--tilt)); }
+  100% { transform: translateY(0)    rotateY(var(--rotY)) rotateZ(var(--tilt)); }
+}
+
+/* classe que dispara o pulo */
+.card.hop {
+  animation: hop .45s ease-out;
+}
+/* Estado final da carta revelada: verso visível + ângulo atual */
+.card.revealed {
+  transform: rotateY(180deg) rotateZ(var(--tilt-end, 0deg));
+}
+
+/* Animação: pulo + flip + pouso no ângulo final */
+@keyframes flipHop {
+  0% {
+    transform: translateY(0) rotateY(0deg) rotateZ(var(--tilt-start, 0deg));
+  }
+  35% {
+    transform: translateY(-20px) rotateY(120deg) rotateZ(var(--tilt-end, 0deg));
+  }
+  70% {
+    transform: translateY(0) rotateY(180deg) rotateZ(var(--tilt-end, 0deg));
+  }
+  85% {
+    transform: translateY(-8px) rotateY(180deg) rotateZ(var(--tilt-end, 0deg));
+  }
+  100% {
+    transform: translateY(0) rotateY(180deg) rotateZ(var(--tilt-end, 0deg));
+  }
+}
+
+/* Classe que dispara a animação */
+.card.flip-hop {
+  animation: flipHop 0.6s ease-out forwards;
+}
