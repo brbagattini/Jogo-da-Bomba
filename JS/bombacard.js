@@ -1,3 +1,4 @@
+import QUESTIONS from "./questions.js"; 
 const detonateBtn  = document.getElementById("detonateBtn");
 const explosion    = document.getElementById("explosion");
 const levelMinSel  = document.getElementById("levelMin");
@@ -17,29 +18,8 @@ const COLORS     = ["#FF2E2E", "#FFD93D", "#FF7B00", "#FFF1A6", "#F8B400", "#FFE
 const BASE_SIZE  = [6,7,8,9,10];
 const DUR_RANGE  = [650, 1000];
 
-const QUESTIONS = [
-  { level: 1,  text: "Você contaria uma piada boba para quebrar o gelo?" },
-  { level: 2,  text: "Você dançaria 10 segundos em pé onde está?" },
-  { level: 3,  text: "Você deixaria {{outro}} escolher um emoji para seu status por 1 hora?" },
-  { level: 4,  text: "Você ligaria para alguém e diria 'você é incrível'?" },
-  { level: 5,  text: "Você cantaria um trecho de música agora?" },
-  { level: 6,  text: "Você deixaria {{outro}} escolher seu apelido por 1 rodada?" },
-  { level: 7,  text: "Você faria uma imitação de alguém famoso por 20 segundos?" },
-  { level: 8,  text: "Você contaria uma história constrangedora (leve) sua?" },
-  { level: 9,  text: "Você trocaria de lugar com {{outro}} na próxima rodada?" },
-  { level: 10, text: "Você gravaria um vídeo curto fazendo careta e mandaria pro grupo?" }
-];
-
-for (let i = 1; i <= 10; i++) {
-  const a = document.createElement("option");
-  const b = document.createElement("option");
-  a.value = b.value = i;
-  a.textContent = b.textContent = i;
-  levelMinSel.appendChild(a);
-  levelMaxSel.appendChild(b);
-}
-levelMinSel.value = "3";
-levelMaxSel.value = "7";
+levelMinSel.value = "1";
+levelMaxSel.value = "5";
 
 function pickOtherPlayer() {
   if (!ALL_PLAYERS.length) return null;
